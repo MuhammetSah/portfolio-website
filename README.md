@@ -1,17 +1,88 @@
-# React + Vite
-## You can visit the page here: https://portfolio-website-ten-pi-79.vercel.app
+# Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio for **Muhammet Sahin** — a web developer in transition, bringing a background in customer service, quality management, and IT support into full-stack web development.
 
-Currently, two official plugins are available:
+**Live site:** https://portfolio-website-ten-pi-79.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview
 
-## React Compiler
+A single-page React application with three views:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Home** — hero introduction and a teaser of featured work
+- **About** — bio, technical and transferable skills, and contact links
+- **Work** — detailed write-ups of featured projects
 
-## Expanding the ESLint configuration
+The UI is a custom design system (no CSS framework): a floating pill-shaped nav with backdrop blur, rounded project cards, a soft multi-color glow background, and a teal accent color.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+- [React 19](https://react.dev/) with [React Router 7](https://reactrouter.com/)
+- [Vite](https://vitejs.dev/) for tooling and the dev server
+- Plain CSS (custom properties, no framework)
+- [ESLint](https://eslint.org/) for linting
+- Deployed on [Vercel](https://vercel.com/)
+
+## Featured Projects
+
+### [Support Ticket System](https://github.com/MuhammetSah/ticket-system)
+A full-stack support ticket app built with React and Flask. Users register and log in with hashed passwords and session-based authentication, then create tickets and track their status. Role-based permissions let a ticket's owner change its status, while only an admin can add a solution. The ticket list refreshes automatically after creating a new ticket, with no page reload required.
+
+**Stack:** React, React Router, Flask, SQLite, Flask-CORS, Werkzeug, Vercel, Render
+**Demo:** https://ticket-system-two-ivory.vercel.app
+
+### [Reply Tracker](https://github.com/MuhammetSah/reply-tracker)
+A Flask and SQLite app that helps track whether you've already replied to a contact. Users can create an account, log in, and flag messages as replied or not replied. The dashboard sorts contacts from most to least overdue, so the person waiting longest for a reply always shows up first.
+
+**Stack:** Flask, SQLite, Python
+**Demo video:** https://youtu.be/WkqX6y5o-_w
+
+## Getting Started
+
+### Prerequisites
+- Node.js 20+
+
+### Installation
+```bash
+git clone https://github.com/MuhammetSah/portfolio-website.git
+cd portfolio-website
+npm install
+```
+
+### Development
+```bash
+npm run dev
+```
+Starts the Vite dev server with hot module reloading.
+
+### Build
+```bash
+npm run build
+```
+Outputs a production build to `dist/`.
+
+### Preview production build
+```bash
+npm run preview
+```
+
+### Lint
+```bash
+npm run lint
+```
+
+## Project Structure
+```
+src/
+├── assets/        # Images and static assets
+├── components/    # Nav, Footer, ProjectCard, Icons, ScrollToTop
+├── pages/         # Home, About, Work
+├── App.jsx        # App shell and route definitions
+├── App.css        # Design system and page styles
+└── main.jsx       # Application entry point
+```
+
+## Contact
+
+- **Email:** [Muhammet.Sahin@gmx.net](mailto:Muhammet.Sahin@gmx.net)
+- **GitHub:** [@MuhammetSah](https://github.com/MuhammetSah)
+- **LinkedIn:** [Muhammet Mustafa Sahin](https://www.linkedin.com/in/muhammet-mustafa-sahin-979946236/)
