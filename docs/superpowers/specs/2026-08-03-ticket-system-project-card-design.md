@@ -29,12 +29,28 @@ Neuestes Projekt zuerst: **Support Ticket System**, danach **Reply Tracker**. Ke
   - GitHub: https://github.com/MuhammetSah/ticket-system
   - Live Demo: https://ticket-system-two-ivory.vercel.app
 
+### 4. Reply-Tracker-Karte: Vorschaubild ergänzt
+
+- Screenshot der Login-Seite (`src/assets/reply-tracker-preview.png`), erzeugt aus dem lokal gestarteten Flask-Dev-Server (`reply-tracker/reply-tracker/app.py`, ohne Debug-Reloader wegen eines Hangs unter Git Bash/Windows). Gleiche `.project-image`-Klasse wie bei der Ticket-System-Karte. Keine sonstigen inhaltlichen Änderungen an dieser Karte.
+
+### 5. Vercel-Routing-Fix im `ticket-system`-Repo (separates Repo, separater Commit)
+
+Die Live-Demo (`https://ticket-system-two-ivory.vercel.app`) lieferte beim direkten Aufruf von clientseitigen Routen (`/login`, `/register`, `/tickets/:id`) einen echten Vercel-404 (`NOT_FOUND`), weil `frontend/vercel.json` nur einen Rewrite für `/api/:path*` enthielt und kein SPA-Fallback auf `index.html`. Fix: zusätzliche Rewrite-Regel
+
+```json
+{ "source": "/((?!api/).*)", "destination": "/index.html" }
+```
+
+Lokal verifiziert durch Produktions-Build (`npm run build`) und Auslieferung über `serve -s dist` (identisches Single-Page-Fallback-Verhalten wie Vercels Rewrite-Mechanismus): `/`, `/login`, `/register`, `/tickets/1` liefern danach 200 statt 404, echte Asset-Dateien (JS/CSS) werden weiterhin direkt ausgeliefert und nicht überschrieben. Andere Routen (Backend-API-Endpunkte, CORS-Konfiguration) wurden geprüft und zeigten keine weiteren Probleme.
+
+**Wichtig:** Dieser Fix liegt im `ticket-system`-Repo, nicht im `portfolio-website`-Repo. Ein `git push` dorthin löst automatisch ein neues Vercel-Deployment der Live-Demo aus — das erfolgt nur nach ausdrücklicher Bestätigung.
+
 ## Nicht Teil dieser Änderung
 
-- Kein Fix für das Vercel-Routing-Problem der Live-Demo (direkte Aufrufe von `/login` etc. liefern dort aktuell einen 404, da kein SPA-Rewrite konfiguriert ist).
-- Keine Änderung an der Reply-Tracker-Karte außer der Position in der Liste.
-- Keine Screenshots/Bilder für die Reply-Tracker-Karte.
+- Keine sonstigen Änderungen an Backend- oder Frontend-Logik des Ticket-Systems.
+- Keine inhaltlichen Änderungen an der Reply-Tracker-Karte außer Position in der Liste und Vorschaubild.
 
 ## Test/Verifikation
 
-- `npm run dev` in `portfolio-website` starten, Projects-Bereich im Browser prüfen: beide Karten untereinander, Ticket System oben, Bild lädt, Links öffnen die richtigen Ziele.
+- `npm run dev` in `portfolio-website` gestartet, Projects-Bereich im Browser geprüft: beide Karten untereinander, Ticket System oben, beide Bilder laden, Links zeigen auf die richtigen Ziele. `npm run build` läuft fehlerfrei durch.
+- `ticket-system/frontend`: `npm run build` + `serve -s dist` bestätigt SPA-Fallback für alle Client-Routen, Assets unverändert erreichbar.
