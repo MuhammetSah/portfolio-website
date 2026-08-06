@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import profileImg from '../assets/profile.jpg'
+import schedulingToolImg from '../assets/scheduling-tool-preview.png'
 import ticketSystemImg from '../assets/ticket-system-preview.png'
 import replyTrackerImg from '../assets/reply-tracker-preview.png'
 import ProjectCard from '../components/ProjectCard'
@@ -23,6 +24,14 @@ function Home() {
       <section className="featured">
         <span className="eyebrow">Featured Work</span>
         <div className="project-list">
+          <ProjectCard
+            variant="teaser"
+            image={schedulingToolImg}
+            imageAlt="Shift Scheduling Tool monthly calendar view"
+            title="Shift Scheduling Tool"
+            description="An automated shift-scheduling tool for HR: React and Flask, with a backtracking algorithm that balances workloads instead of leaving avoidable gaps."
+            workLink="/work"
+          />
           <ProjectCard
             variant="teaser"
             image={ticketSystemImg}
