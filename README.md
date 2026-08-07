@@ -24,6 +24,11 @@ The UI is a custom design system (no CSS framework): a floating pill-shaped nav 
 
 ## Featured Projects
 
+### [Shift Scheduling Tool](https://github.com/MuhammetSah/scheduling-tool)
+An automated shift-scheduling tool for HR teams, built with React and Flask. HR defines employees, their availability constraints, and shift types with per-weekday staffing requirements; the tool generates a full monthly schedule via chronological backtracking with branch-and-bound (not a greedy pass), then lets HR fine-tune the result by hand, including swapping shifts between employees. Role-based access keeps employees to a read-only view of their own shifts.
+
+**Stack:** React, React Router, Flask, SQLite, PostgreSQL, Flask-CORS, Werkzeug, Backtracking Algorithm
+
 ### [Support Ticket System](https://github.com/MuhammetSah/ticket-system)
 A full-stack support ticket app built with React and Flask. Users register and log in with hashed passwords and session-based authentication, then create tickets and track their status. Role-based permissions let a ticket's owner change its status, while only an admin can add a solution. The ticket list refreshes automatically after creating a new ticket, with no page reload required.
 
